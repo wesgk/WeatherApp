@@ -13,10 +13,9 @@ module.exports = {
     path: __dirname + '/dist',
     filename: "index_bundle.js"
   },
-  module: {
+  module : {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-      {test: /\.css$/, loader: "style-loader!css-loader"}
+      {test: /\.js$/, include: __dirname + '/app', exclude: /node_modules/, loader: "babel-loader", query: {presets: ['react']}}
     ]
   },
   plugins: [HTMLWebpackPluginConfig]
