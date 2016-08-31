@@ -36,7 +36,7 @@ function City (props) {
 
 City.propTypes = {
   onSubmitCity: PropTypes.func.isRequired,
-  onUpdateCity: PropTypes.func.isRequired
+  onUpdateCity: PropTypes.func.isRequired,
 }
 
 module.exports = City;
