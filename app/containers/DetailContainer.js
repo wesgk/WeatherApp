@@ -14,9 +14,10 @@ var DetailContainer = React.createClass({
       city: '',
       day: '',
       description: '',
+      icon: '',
       minTemp: 0,
       maxTemp: 0,
-      humidity: '',
+      humidity: 0,
     }
   },
   componentDidMount: function () {
@@ -32,6 +33,7 @@ var DetailContainer = React.createClass({
           city: this.props.routeParams.city,
           day: day,
           description: list.weather[0].description,
+          icon: list.weather[0].icon,
           minTemp: list.temp.min,
           maxTemp: list.temp.max,
           humidity: list.humidity,
@@ -47,6 +49,7 @@ var DetailContainer = React.createClass({
         city={this.props.routeParams.city} 
         day={this.state.day} 
         description={this.state.description}
+        icon={this.state.icon}
         minTemp={this.state.minTemp}
         maxTemp={this.state.maxTemp} 
         humidity={this.state.humidity} />

@@ -10,14 +10,21 @@ var mapItemStyle = {
   margin:'35px',
   textAlign:'center',
 }
+var IconStyle = {
+  height: '130px'
+}
+var h2Style = {
+  fontSize: '30px',
+  fontWeight: '100',
+  color: '#333'
+}
 
 function SingleDay (props) {
   return (
     <div className="day" style={mapItemStyle}>
-      <Link to={'/forecast/detail/' + props.city + '/' + props.weather.index}>
-        <div><img src={'/dist/images/' + props.weather.icon + '.svg'} /></div>
-        <div>{props.weather.day}</div>
-        <div>{props.weather.description}</div>
+      <Link to={'/forecast/detail/' + props.city + '/' + props.weather.index} style={LinkStyle}>
+        <div><img src={'/dist/images/' + props.weather.icon + '.svg'} style={IconStyle} /></div>
+        <h2 style={h2Style}>{props.weather.day}</h2>
       </Link>
     </div>
   )
