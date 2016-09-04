@@ -6,7 +6,7 @@ var HeaderMenu = require('./HeaderMenu');
 function PageWrapper (props) {
   return (
     <div>
-      <HeaderMenu></HeaderMenu>
+      <HeaderMenu city={props.city}></HeaderMenu>
       <div className='jumbotron col-sm-12 text-center' styles={styles.transparentBg}>
         <div>
           {props.children}

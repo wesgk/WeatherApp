@@ -40,6 +40,11 @@ var MultiDayContainer = React.createClass({
 
       }.bind(this))
   },
+  shouldComponentUpdate: function () {
+    var query = this.props.location.query;
+    console.log('in shouldComponentUpdate: ' + query.city);
+    return true;
+  },
   handleSelectDay: function (e) {
     var day;
     // catch selected day, push router to individual day display

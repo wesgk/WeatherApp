@@ -22,7 +22,7 @@ var h2Style = {
 function SingleDay (props) {
   return (
     <div className="day" style={mapItemStyle}>
-      <Link to={'/forecast/detail/' + props.city + '/' + props.weather.index} style={LinkStyle}>
+      <Link to={'/forecast/detail/' + props.city + '/' + props.weather.index}>
         <div><img src={'/dist/images/' + props.weather.icon + '.svg'} style={IconStyle} /></div>
         <h2 style={h2Style}>{props.weather.day}</h2>
       </Link>

@@ -1,6 +1,5 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-// var MainContainer= require('../containers/MainContainer');
 var PageWrapper = require('./PageWrapper');
 var SingleDay= require('../components/SingleDay');
 var h1Style = {
@@ -37,7 +36,7 @@ function MultiDay (props) {
 	console.log('MultiDay list: ', props);
 	console.log('Day 1: ', props.weather[0]);
   return (
-    <PageWrapper>
+    <PageWrapper city={props.city}>
     	<div style={pageWrapper}>
     		<h1 style={h1Style}>{props.city}</h1>
     		<p style={subheadStyle}>Select a day</p>
