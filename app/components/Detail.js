@@ -33,6 +33,7 @@ var h2Style = {
 }
 
 function Detail (props) {
+  console.log('props: ', props);
   return (
     <div>
       <div style={DetailStyle}>

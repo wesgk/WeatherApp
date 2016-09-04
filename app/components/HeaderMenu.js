@@ -28,54 +28,24 @@ var InputStyle = {
   color: '#000'
 }
 
-var HeaderMenu = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-  getInitialState: function () {
-    return {
-      city: ''
-    }
-  },
-  componentWillReceiveProps: function () {
-    console.log('componentWillReceiveProps');
-  },
-  handleSubmitCity: function (e) {
-    e.preventDefault();
-
-    this.context.router.push({
-      pathname: '/forecast',
-      query: {
-        city: this.state.city
-      }
-    });
-    this.forceUpdate();
-  },
-  handleUpdateCity: function (event) {
-    console.log('updating city: ' + event.target.value);
-    console.log('state city: ' + this.state.city);
-    this.setState({
-      city: event.target.value
-    })
-  },
- render: function (props) {
+function HeaderMenu (props) {
   // function HeaderMenu() {
   return (
     <div style={HeaderStyle}>
       <h1 style={H1Style}>Weather Time</h1>
       <div className={HeaderFormStyle}>
-        <form onSubmit={this.handleSubmitCity}>
-          <input name='city' id='headerCity' className='formControl' style={InputStyle} type='text' value={this.state.city} onChange={this.handleUpdateCity} />
+        <form onSubmit={props.onSubmitCity}>
+          <input name='city' id='headerCity' className='formControl' style={InputStyle} type='text' onChange={props.onUpdateCity} />
           <button type='submit' className={'btn btn-success '} style={ButtonStyle}>Get Weather</button>
         </form>
       </div>
     </div>
   )
 }
-})
 
 HeaderMenu.PropTypes = {
-
+  onSubmitCity: PropTypes.func.isRequired,
+  onUpdateCity: PropTypes.func.isRequired,
 }
 
 module.exports = HeaderMenu;

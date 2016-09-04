@@ -12,6 +12,7 @@ var MultiDayContainer = React.createClass({
     return {
       coord: [],
       city: '',
+      updatedCity: '',
       weather: [],
     }
   },
@@ -41,21 +42,42 @@ var MultiDayContainer = React.createClass({
       }.bind(this))
   },
   shouldComponentUpdate: function () {
-    var query = this.props.location.query;
-    console.log('in shouldComponentUpdate: ' + query.city);
+    // var query = this.props.location.query;
+    console.log('in MultiDayContainer > shouldComponentUpdate: ' + this.state.city);
     return true;
+  },
+  componentWillReceiveProps: function (nextProps) {
+    
   },
   handleSelectDay: function (e) {
     var day;
     // catch selected day, push router to individual day display
     day = e.target;
   },
+  handleSubmitCity: function (e) {
+    e.preventDefault();
+    console.log('updated city: ', this.state.updatedCity);
+    this.setState({ city: this.state.updatedCity });
+    this.context.router.push({
+      pathname: '/forecast/' + this.state.updatedCity,
+      query: {
+        city: this.state.updatedCity
+      }
+    })
+  },
+  handleUpdateCity: function (event) {
+    this.setState({
+      updatedCity: event.target.value
+    })
+  },
   render: function () {
     return (
       <MultiDay 
         coord={this.state.coord}
         city={this.state.city} 
-        weather={this.state.weather} />
+        weather={this.state.weather} 
+        onUpdateCity={this.handleUpdateCity}
+        onSubmitCity={this.handleSubmitCity} />
     )
   }
 });

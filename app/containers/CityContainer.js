@@ -15,7 +15,7 @@ var CityContainer = React.createClass({
     e.preventDefault();
 
     this.context.router.push({
-      pathname: '/forecast',
+      pathname: '/forecast/' + this.state.city,
       query: {
         city: this.state.city
       }

@@ -6,7 +6,7 @@ var HeaderMenu = require('./HeaderMenu');
 function PageWrapper (props) {
   return (
     <div>
-      <HeaderMenu city={props.city}></HeaderMenu>
+      <HeaderMenu onSubmitCity={props.onSubmitCity} onUpdateCity={props.onUpdateCity}></HeaderMenu>
       <div className='jumbotron col-sm-12 text-center' styles={styles.transparentBg}>
         <div>
           {props.children}
@@ -17,7 +17,8 @@ function PageWrapper (props) {
 }
 
 PageWrapper.PropTypes = {
-
+  onSubmitCity: PropTypes.func.isRequired,
+  onUpdateCity: PropTypes.func.isRequired,
 }
 
 module.exports = PageWrapper;

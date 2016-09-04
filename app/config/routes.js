@@ -14,7 +14,7 @@ var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={CityContainer} />
-      <Route path='forecast' header='Multi-Day Forecast' component={MultiDayContainer} />
+      <Route path='forecast/:city' header='Multi-Day Forecast' component={MultiDayContainer} />
       <Route path='forecast/detail/:city/:index' header='Multi-Day Forecast' component={DetailContainer} />
       <Route path='city' header='Single-Day Forecast' component={CityContainer} />
     </Route>

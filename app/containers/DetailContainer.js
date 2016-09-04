@@ -22,6 +22,8 @@ var DetailContainer = React.createClass({
   },
   componentDidMount: function () {
     var query = this.props.routeParams;
+    console.log('query.city: ', query.city);
+    console.log('query.index: ', query.index);
     weatherHelpers.getLongRangeForecast(query.city)
       .then(function (obj) {
         var index = query.index;
