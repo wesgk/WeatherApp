@@ -1,5 +1,6 @@
 var React = require('react');
 var Detail = require('../components/Detail.js');
+var HeaderMenuContainer = require('./HeaderMenuContainer');
 var dateHelpers = require('../utils/dateHelpers.js');
 var weatherHelpers = require('../utils/weatherHelpers');
 
@@ -46,15 +47,18 @@ var DetailContainer = React.createClass({
   },
   render: function () {
     return (
-      <Detail
-        isLoading={this.state.isLoading}
-        city={this.props.routeParams.city} 
-        day={this.state.day} 
-        description={this.state.description}
-        icon={this.state.icon}
-        minTemp={this.state.minTemp}
-        maxTemp={this.state.maxTemp} 
-        humidity={this.state.humidity} />
+      <div>
+        <HeaderMenuContainer />
+        <Detail
+          isLoading={this.state.isLoading}
+          city={this.props.routeParams.city} 
+          day={this.state.day} 
+          description={this.state.description}
+          icon={this.state.icon}
+          minTemp={this.state.minTemp}
+          maxTemp={this.state.maxTemp} 
+          humidity={this.state.humidity} />
+      </div>
     )
   }
 

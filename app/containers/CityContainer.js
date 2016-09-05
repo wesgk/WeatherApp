@@ -1,6 +1,6 @@
 var React = require('react');
 var City = require('../components/City');
-// var WeatherNetworkHelper = require('../utils/weatherNetworkHelper');
+var HeaderMenuContainer = require('./HeaderMenuContainer');
 
 var CityContainer = React.createClass({
   contextTypes: {
@@ -28,10 +28,14 @@ var CityContainer = React.createClass({
   },
   render: function () {
     return (
-      <City
-        onUpdateCity={this.handleUpdateCity}
-        onSubmitCity={this.handleSubmitCity}
-      />
+      <div>
+        <HeaderMenuContainer />
+        <City
+          onUpdateCity={this.handleUpdateCity}
+          onSubmitCity={this.handleSubmitCity}
+        />
+
+      </div>
     )
   }
 });

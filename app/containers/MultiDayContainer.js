@@ -1,5 +1,6 @@
 var React = require('react');
 var MultiDay = require('../components/MultiDay.js');
+var HeaderMenuContainer = require('./HeaderMenuContainer');
 var weatherHelpers = require('../utils/weatherHelpers');
 var dateHelpers = require('../utils/dateHelpers.js');
 var createFragment = require('react-addons-create-fragment');
@@ -72,12 +73,15 @@ var MultiDayContainer = React.createClass({
   },
   render: function () {
     return (
-      <MultiDay 
-        coord={this.state.coord}
-        city={this.state.city} 
-        weather={this.state.weather} 
-        onUpdateCity={this.handleUpdateCity}
-        onSubmitCity={this.handleSubmitCity} />
+      <div>
+        <HeaderMenuContainer />
+        <MultiDay 
+          coord={this.state.coord}
+          city={this.state.city} 
+          weather={this.state.weather} 
+          onUpdateCity={this.handleUpdateCity}
+          onSubmitCity={this.handleSubmitCity} />
+      </div>
     )
   }
 });

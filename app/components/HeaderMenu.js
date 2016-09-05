@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
 var HeaderStyle = {
   display: 'flex',
@@ -29,10 +30,11 @@ var InputStyle = {
 }
 
 function HeaderMenu (props) {
-  // function HeaderMenu() {
   return (
     <div style={HeaderStyle}>
-      <h1 style={H1Style}>Weather Time</h1>
+      <h1 style={H1Style}>
+        <Link to='/'>Weather Time</Link>
+      </h1>
       <div className={HeaderFormStyle}>
         <form onSubmit={props.onSubmitCity}>
           <input name='city' id='headerCity' className='formControl' style={InputStyle} type='text' onChange={props.onUpdateCity} />
