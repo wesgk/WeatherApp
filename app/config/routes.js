@@ -7,6 +7,7 @@ var hashHistory = ReactRouter.hashHistory;
 var Main = require('../components/Main');
 var MainContainer = require('../containers/MainContainer');
 var Home = require('../components/City');
+var HeaderMenuContainer = require('../containers/HeaderMenuContainer');
 var CityContainer = require('../containers/CityContainer');
 var MultiDayContainer = require('../containers/MultiDayContainer');
 var DetailContainer = require('../containers/DetailContainer');
@@ -14,10 +15,9 @@ var DetailContainer = require('../containers/DetailContainer');
 var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={MainContainer}>
-      <IndexRoute component={CityContainer} />
-      <Route path='forecast/:city' header='Multi-Day Forecast' component={MultiDayContainer} />
-      <Route path='forecast/detail/:city/:index' header='Multi-Day Forecast' component={DetailContainer} />
-      <Route path='city' header='Single-Day Forecast' component={CityContainer} />
+      <IndexRoute components={ {header: HeaderMenuContainer, main: CityContainer} } />
+      <Route path='forecast/:city' components={ { header: HeaderMenuContainer, main: MultiDayContainer } } ></Route>
+      <Route path='forecast/detail/:city/:index' header='Multi-Day Forecast' components={ { header: HeaderMenuContainer, main: DetailContainer } } ></Route>
     </Route>
   </Router>
 );

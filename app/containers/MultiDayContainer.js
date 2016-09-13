@@ -73,15 +73,12 @@ var MultiDayContainer = React.createClass({
   },
   render: function () {
     return (
-      <div>
-        <HeaderMenuContainer />
-        <MultiDay 
-          coord={this.state.coord}
-          city={this.state.city} 
-          weather={this.state.weather} 
-          onUpdateCity={this.handleUpdateCity}
-          onSubmitCity={this.handleSubmitCity} />
-      </div>
+      <MultiDay 
+        coord={this.state.coord}
+        city={this.state.city} 
+        weather={this.state.weather} 
+        onUpdateCity={this.handleUpdateCity}
+        onSubmitCity={this.handleSubmitCity} />
     )
   }
 });

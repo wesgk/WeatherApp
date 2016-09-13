@@ -28,14 +28,10 @@ var CityContainer = React.createClass({
   },
   render: function () {
     return (
-      <div>
-        <HeaderMenuContainer />
-        <City
+      <City
           onUpdateCity={this.handleUpdateCity}
           onSubmitCity={this.handleSubmitCity}
         />
-
-      </div>
     )
   }
 });

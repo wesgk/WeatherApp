@@ -4,6 +4,9 @@ var styles = {
   },
   space: {
     margin: '25px'
+  },
+  a: {
+    textDecoration: 'none'
   }
 };
 

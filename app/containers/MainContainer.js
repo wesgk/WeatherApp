@@ -1,12 +1,23 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 var styles = require('../styles');
-var HeaderMenuContainer = require('./HeaderMenuContainer');
+var HeaderStyle = {
+};
+var MainStyle = {
+  height: '92%'
+};
+
 
 function MainContainer (props) {
+  console.log('props.children: ', props);
   return ( 
-    <div className='jumbotron col-sm-12 text-center' styles={styles.transparentBg}>
-      <div>
-        {props.children}
+    <div>
+      <div className="header" style={HeaderStyle}>
+        {props.header ? props.header : ''}
+      </div>
+      <div className="main" style={MainStyle}>
+        {props.main ? props.main : ''}
+        {props.children ? props.children : ''}
       </div>
     </div>
   )
