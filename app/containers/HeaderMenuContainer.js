@@ -8,22 +8,26 @@ var HeaderMenuContainer = React.createClass({
   },
   getInitialState: function () {
     return {
-        city: ''  
+        city: '',
+        updatedCity: '',  
     };
   },
   handleSubmitCity: function (e) {
     e.preventDefault();
     console.log('handleSubmitCity');
+
+    this.setState({ city: this.state.updatedCity });
     this.context.router.push({
-      pathname: '/forecast/' + this.state.city,
+      pathname: '/forecast/' + this.state.updatedCity,
       query: {
-        city: this.state.city
+        city: this.state.updatedCity
       }
     })
+    this.forceUpdate();
   },
   handleUpdateCity: function (event) {
     this.setState({
-      city: event.target.value
+      updatedCity: event.target.value
     })
     console.log('handleUpdateCity, ' + this.state.city);
   },

@@ -4,6 +4,8 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var transparentBg = require('../styles').transparentBg;
 var MainContainer = require('../containers/MainContainer');
+var Styles = require('../styles/global.css');
+
 var CityStyle = {
   textAlign: 'center',
   display: 'flex',
@@ -34,7 +36,7 @@ function City (props) {
             style={InputStyle}
           />
         </div>
-        <div className='form-group col-sm-4 col-sm-offset-4'>  
+        <div className='form-group col-sm-4'>  
           <button 
             type='submit' 
             className='btn btn-lg btn-success'>
