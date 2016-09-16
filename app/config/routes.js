@@ -15,9 +15,9 @@ var DetailContainer = require('../containers/DetailContainer');
 var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={MainContainer}>
-      <IndexRoute components={ {header: HeaderMenuContainer, main: CityContainer} } />
-      <Route path='forecast/:city' components={ { header: HeaderMenuContainer, main: MultiDayContainer } } ></Route>
-      <Route path='forecast/detail/:city/:index' header='Multi-Day Forecast' components={ { header: HeaderMenuContainer, main: DetailContainer } } ></Route>
+      <IndexRoute component={CityContainer} />
+      <Route path='forecast/:city' component={MultiDayContainer} ></Route>
+      <Route path='forecast/detail/:city/:index' header='Multi-Day Forecast' components={DetailContainer} ></Route>
     </Route>
   </Router>
 );

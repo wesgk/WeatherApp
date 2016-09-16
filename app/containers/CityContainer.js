@@ -8,7 +8,7 @@ var CityContainer = React.createClass({
   },
   getInitialState: function () {
     return {
-      city: ''
+      city: this.props.parentStateCity
     }
   },
   handleSubmitCity: function (e) {
@@ -20,6 +20,7 @@ var CityContainer = React.createClass({
         city: this.state.city
       }
     })
+    this.props.handleUpdateParentState(this.state.city);
   },
   handleUpdateCity: function (event) {
     this.setState({

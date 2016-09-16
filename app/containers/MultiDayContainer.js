@@ -9,22 +9,15 @@ var MultiDayContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function () {
-    return {
-      coord: [],
-      city: '',
-      updatedCity: '',
-      weather: [],
-    }
-  },
-  componentDidMount: function () {
-    var query = this.props.location.query;
-    weatherHelpers.getLongRangeForecast(query.city)
+  getWeather: function (city) {
+    console.log('some function');
+
+    weatherHelpers.getLongRangeForecast(city)
       .then(function (obj) {
         var list = obj.data.list;
         var self = this;
         var weatherArray = [];
-        console.log('MultiDayContainer - componentDidMount.then(): ', list);
+        console.log('getWeather: ', list);
         
         list.map(function(item, index){
           var weather = item.weather[0];
@@ -39,46 +32,55 @@ var MultiDayContainer = React.createClass({
           city: obj.data.city['name'],
           weather: weatherArray,
         });
-
       }.bind(this))
   },
-  shouldComponentUpdate: function () {
-    // var query = this.props.location.query;
-    console.log('in MultiDayContainer > shouldComponentUpdate: ' + this.state.city);
-    return true;
+  getInitialState: function () {
+    console.log('getInitialState');
+    return {
+      coord: [],
+      city: this.props.parentStateCity,
+      updatedCity: '',
+      weather: [],
+    }
+  },
+  componentWillMount: function() {
+    console.log('componentWillMount');
+  },
+  componentDidMount: function () {
+    console.log('componentDidMount');
+    var query = this.props.location.query;
+    this.getWeather(query.city);
   },
   componentWillReceiveProps: function (nextProps) {
-    
+    console.log('componentWillReceiveProps ', nextProps);
+    this.getWeather(nextProps.parentStateCity);
+  },
+  shouldComponentUpdate: function (nextProps, nextState) {
+    var trueFalse = Boolean(nextProps.parentStateCity !== nextState.parentStateCity);
+    console.log('shouldComponentUpdate ' + trueFalse);
+    return nextProps.parentStateCity !== nextState.parentStateCity;
+  },
+  componentWillUpdate: function (nextProps, nextState) {
+    console.log('componentWillUpdate');
+  },
+  componentDidUpdate: function (prevProps, prevState) {
+    console.log('componentDidUpdate');
+  },
+  componentWillUnmount: function () {
+    this.componentDidMount();
   },
   handleSelectDay: function (e) {
     var day;
     // catch selected day, push router to individual day display
     day = e.target;
   },
-  handleSubmitCity: function (e) {
-    e.preventDefault();
-    console.log('updated city: ', this.state.updatedCity);
-    this.setState({ city: this.state.updatedCity });
-    this.context.router.push({
-      pathname: '/forecast/' + this.state.updatedCity,
-      query: {
-        city: this.state.updatedCity
-      }
-    })
-  },
-  handleUpdateCity: function (event) {
-    this.setState({
-      updatedCity: event.target.value
-    })
-  },
   render: function () {
+    console.log('render');
     return (
       <MultiDay 
         coord={this.state.coord}
         city={this.state.city} 
-        weather={this.state.weather} 
-        onUpdateCity={this.handleUpdateCity}
-        onSubmitCity={this.handleSubmitCity} />
+        weather={this.state.weather} />
     )
   }
 });

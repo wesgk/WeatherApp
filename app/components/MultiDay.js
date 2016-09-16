@@ -33,10 +33,8 @@ function Puke (obj) {
 }
 
 function MultiDay (props) {
-	console.log('MultiDay list: ', props);
-	console.log('Day 1: ', props.weather[0]);
-  return (
-    <PageWrapper city={props.city} onSubmitCity={props.onSubmitCity} onUpdateCity={props.onUpdateCity} >
+	return (
+    <PageWrapper city={props.city}>
 
     	<div style={pageWrapper}>
     		<h1 style={h1Style}>{props.city}</h1>
@@ -57,8 +55,6 @@ MultiDay.propTypes = {
   coord: PropTypes.array.isRequired,
   city: PropTypes.string.isRequired,
   weather: PropTypes.array.isRequired,
-  onSubmitCity: PropTypes.func.isRequired,
-  onUpdateCity: PropTypes.func.isRequired,
 }
 
 module.exports = MultiDay;
