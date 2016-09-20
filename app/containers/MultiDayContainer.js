@@ -10,8 +10,6 @@ var MultiDayContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getWeather: function (city) {
-    console.log('some function');
-
     weatherHelpers.getLongRangeForecast(city)
       .then(function (obj) {
         var list = obj.data.list;

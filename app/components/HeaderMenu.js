@@ -36,12 +36,10 @@ function HeaderMenu (props) {
       <h1 style={H1Style}>
         <Link to='/'>Weather Time</Link>
       </h1>
-      <div className={HeaderFormStyle}>
-        <form onSubmit={props.onSubmitCity}>
-          <input name='city' id='headerCity' className='formControl' style={InputStyle} type='text' onChange={props.onUpdateCity} />
-          <button type='submit' className={'btn btn-success '} style={ButtonStyle}>Get Weather</button>
-        </form>
-      </div>
+      <form onSubmit={props.onSubmitCity} style={HeaderFormStyle}>
+        <input name='city' id='headerCity' className='form-control' style={InputStyle} type='text' onChange={props.onUpdateCity} />
+        <button type='submit' className={'btn btn-success '} style={ButtonStyle}>Get Weather</button>
+      </form>
     </div>
   )
 }

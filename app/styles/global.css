@@ -3,7 +3,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:active, a:focus {
   color: white;
   text-decoration: none;
 }
