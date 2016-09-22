@@ -8,7 +8,7 @@ var HeaderMenuContainer = React.createClass({
   },
   getInitialState: function () {
     return {
-        city: this.props.parentStateCity,
+        city: this.props.city,
         updatedCity: '',  
     };
   },
@@ -21,7 +21,7 @@ var HeaderMenuContainer = React.createClass({
         city: this.state.updatedCity
       }
     })
-    this.props.handleUpdateParentState(this.state.updatedCity);
+    this.props.handleUpdateState(this.state.updatedCity);
   },
   handleUpdateCity: function (event) {
     this.setState({

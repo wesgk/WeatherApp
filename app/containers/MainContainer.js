@@ -22,8 +22,8 @@ var MainContainer = React.createClass({
   render: function () {
     return ( 
       <div>
-        <HeaderMenuContainer parentStateCity={this.state.city} handleUpdateParentState={this.updateState}></HeaderMenuContainer>
-        <div div className="main" style={MainStyle}>{React.cloneElement(this.props.children, { parentStateCity: this.state.city, handleUpdateParentState: this.updateState })}</div>
+        <HeaderMenuContainer city={this.state.city} handleUpdateState={this.updateState}></HeaderMenuContainer>
+        <div div className="main" style={MainStyle}>{React.cloneElement(this.props.children, { city: this.state.city, handleUpdateState: this.updateState })}</div>
       </div>
     )
   }

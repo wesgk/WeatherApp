@@ -28,30 +28,27 @@ var mapItemWrapperStyle = {
 	margin:'50px auto',
 }
 
-function Puke (obj) {
-	return <pre>{JSON.stringify(obj, null, ' ')}</pre>
-}
-
 function MultiDay (props) {
-	return (
-    <PageWrapper city={props.city}>
-
-    	<div style={pageWrapper}>
-    		<h1 style={h1Style}>{props.city}</h1>
-    		<p style={subheadStyle}>Select a day</p>
-  	  	<div className="days" style={mapItemWrapperStyle}>
-  	  		{props.weather[0] && <SingleDay city={props.city} weather={props.weather[0]} id="0" />}
-  	  		{props.weather[1] && <SingleDay city={props.city} weather={props.weather[1]} id="0" />}
-  	  		{props.weather[2] && <SingleDay city={props.city} weather={props.weather[2]} id="0" />}
-  	  		{props.weather[3] && <SingleDay city={props.city} weather={props.weather[3]} id="0" />}
-  	  		{props.weather[4] && <SingleDay city={props.city} weather={props.weather[4]} id="0" />}
-  	  	</div>
-  	  </div>
-    </PageWrapper>
+	return (props.isLoading === true
+    ? <p style={h1Style}>Loading</p>
+    : <PageWrapper>
+        <div style={pageWrapper}>
+      		<h1 style={h1Style}>{props.city}</h1>
+      		<p style={subheadStyle}>Select a day</p>
+    	  	<div className="days" style={mapItemWrapperStyle}>
+    	  		{props.weather[0] && <SingleDay city={props.city} weather={props.weather[0]} id="0" />}
+    	  		{props.weather[1] && <SingleDay city={props.city} weather={props.weather[1]} id="0" />}
+    	  		{props.weather[2] && <SingleDay city={props.city} weather={props.weather[2]} id="0" />}
+    	  		{props.weather[3] && <SingleDay city={props.city} weather={props.weather[3]} id="0" />}
+    	  		{props.weather[4] && <SingleDay city={props.city} weather={props.weather[4]} id="0" />}
+    	  	</div>
+    	  </div>
+      </PageWrapper>
   )
 }
 
 MultiDay.propTypes = {
+  isLoading: PropTypes.bool,
   coord: PropTypes.array.isRequired,
   city: PropTypes.string.isRequired,
   weather: PropTypes.array.isRequired,

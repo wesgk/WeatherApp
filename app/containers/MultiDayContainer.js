@@ -15,17 +15,17 @@ var MultiDayContainer = React.createClass({
         var list = obj.data.list;
         var self = this;
         var weatherArray = [];
-        console.log('getWeather: ', list);
-        
+      
         list.map(function(item, index){
           var weather = item.weather[0];
           weather.day = dateHelpers.getDateStamp(index);
           weather.index = index;
           weatherArray.push(weather);
-          console.log('item ', self.state.weather[index]);
+          // console.log('log day: ', self.state.weather[index]);
         });
 
         this.setState({ 
+          isLoading: false,
           coord: [obj.data.city['coord'].lat, obj.data.city['coord'].lon],
           city: obj.data.city['name'],
           weather: weatherArray,
@@ -33,10 +33,10 @@ var MultiDayContainer = React.createClass({
       }.bind(this))
   },
   getInitialState: function () {
-    console.log('getInitialState');
     return {
+      isLoading: true,
       coord: [],
-      city: this.props.parentStateCity,
+      city: this.props.city,
       updatedCity: '',
       weather: [],
     }
@@ -54,9 +54,16 @@ var MultiDayContainer = React.createClass({
     this.getWeather(nextProps.parentStateCity);
   },
   shouldComponentUpdate: function (nextProps, nextState) {
-    var trueFalse = Boolean(nextProps.parentStateCity !== nextState.parentStateCity);
-    console.log('shouldComponentUpdate ' + trueFalse);
-    return nextProps.parentStateCity !== nextState.parentStateCity;
+    var trueFalse;
+
+    if(nextProps.parentStateCity) {
+      trueFalse = Boolean(nextProps.parentStateCity !== nextState.parentStateCity);
+    } else {
+      trueFalse = true;
+    }
+    console.log('shouldComponentUpdate ' + trueFalse + ' nextProps.parentStateCity: ' + nextProps.parentStateCity + ' nextState.parentStateCity: ' + nextState.parentStateCity );
+    console.log('nextProps, ', nextProps);
+    return trueFalse;
   },
   componentWillUpdate: function (nextProps, nextState) {
     console.log('componentWillUpdate');
@@ -76,6 +83,7 @@ var MultiDayContainer = React.createClass({
     console.log('render');
     return (
       <MultiDay 
+        isLoading={this.state.isLoading}
         coord={this.state.coord}
         city={this.state.city} 
         weather={this.state.weather} />

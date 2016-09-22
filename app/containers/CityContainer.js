@@ -13,14 +13,13 @@ var CityContainer = React.createClass({
   },
   handleSubmitCity: function (e) {
     e.preventDefault();
-
     this.context.router.push({
       pathname: '/forecast/' + this.state.city,
       query: {
         city: this.state.city
       }
     })
-    this.props.handleUpdateParentState(this.state.city);
+    this.props.handleUpdateState(this.state.city);
   },
   handleUpdateCity: function (event) {
     this.setState({

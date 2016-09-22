@@ -4,7 +4,6 @@ var HeaderMenuContainer = require('./HeaderMenuContainer');
 var dateHelpers = require('../utils/dateHelpers.js');
 var weatherHelpers = require('../utils/weatherHelpers');
 
-
 var DetailContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -19,19 +18,15 @@ var DetailContainer = React.createClass({
       minTemp: 0,
       maxTemp: 0,
       humidity: 0,
-    }
+    };
   },
   componentDidMount: function () {
     var query = this.props.routeParams;
-    console.log('query.city: ', query.city);
-    console.log('query.index: ', query.index);
     weatherHelpers.getLongRangeForecast(query.city)
       .then(function (obj) {
         var index = query.index;
         var day = dateHelpers.getDateStamp(index);
         var list = obj.data.list[index];
-        console.log('list: ', list);
-    
         this.setState({
           city: this.props.routeParams.city,
           day: day,
@@ -42,8 +37,6 @@ var DetailContainer = React.createClass({
           humidity: list.humidity,
         });
       }.bind(this))
-    // get weather data here
-    // load days var
   },
   render: function () {
     return (

@@ -37,14 +37,16 @@ function Detail (props) {
   return (
     <div>
       <div style={DetailStyle}>
-        <div><img src={'/dist/images/' + props.icon + '.svg'} style={IconStyle} /></div>
+        <div>
+         {props.icon && <img src={'/dist/images/' + props.icon + '.svg'} style={IconStyle} />}
+        </div>
         <h2 style={h2Style}>{props.day}</h2>
       </div>
       <div>
         <p style={pStyle}>{props.city}</p>
         <p style={pStyle}>{props.description}</p>
-        <p style={pStyle}>min temp: {props.minTemp}</p>
-        <p style={pStyle}>max temp: {props.maxTemp}</p>
+        <p style={pStyle}>min temp: {props.minTemp} &deg;C</p>
+        <p style={pStyle}>max temp: {props.maxTemp} &deg;C</p>
         <p style={pStyle}>humidity: {props.humidity}</p>
       </div>
     </div>
